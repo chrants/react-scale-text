@@ -22,13 +22,11 @@ export const css = (el, styles) => {
 };
 /* eslint-enable no-param-reassign, guard-for-in, no-restricted-syntax */
 
-
 // Get the current style property value for the given element
 export function getStyle(el, styleProp) {
   if (el.currentStyle) {
     return el.currentStyle[camelize(styleProp)];
-  }
-  else if (document.defaultView && document.defaultView.getComputedStyle) {
+  } else if (document.defaultView && document.defaultView.getComputedStyle) {
     return document.defaultView
       .getComputedStyle(el, null)
       .getPropertyValue(styleProp);
@@ -36,12 +34,11 @@ export function getStyle(el, styleProp) {
   return el.style[camelize(styleProp)];
 }
 
-export function getOverflow(el) {
+export function doesOverflow(el) {
   return [
-    el.clientWidth < el.scrollWidth,
-    el.clientHeight < el.scrollHeight
+    el.scrollWidth - 1 <= el.clientWidth,
+    el.scrollHeight - 1 <= el.clientHeight
   ];
 }
 
-export const hasOverflow = el => getOverflow(el).some(v => v === true);
-
+// export const hasOverflow = el => doesOverflow(el).some(v => v === true);
