@@ -4,13 +4,7 @@ import { doesOverflow } from "./dom-utils";
 // Determine the font-size to set on the element `el` that will
 // allow the first child of that element to fill the maximum height
 // and width without causing overflow
-export default function getFillSize(
-  el,
-  minFontSize,
-  maxFontSize,
-  mode,
-  factor = 1
-) {
+export default function getFillSize(el, minFontSize, maxFontSize, mode) {
   // Make an initial guess at font-size that fits width
   let fontSize = maxFontSize;
 

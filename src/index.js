@@ -104,6 +104,7 @@ class ScaleText extends Component {
       height: getStyle(this._wrapper, "height"),
       padding: getStyle(this._wrapper, "padding"),
       lineHeight: getStyle(this._wrapper, "line-height"),
+      letterSpacing: getStyle(this._wrapper, "letter-spacing"),
       font: getStyle(this._wrapper, "font")
     });
     document.body.appendChild(this.ruler);
