@@ -36,8 +36,8 @@ export function getStyle(el, styleProp) {
 
 export function doesOverflow(el) {
   return [
-    el.scrollWidth - 1 <= el.clientWidth,
-    el.scrollHeight - 1 <= el.clientHeight
+    el.scrollWidth - 1 > el.clientWidth,
+    el.scrollHeight - 1 > el.clientHeight
   ];
 }
 

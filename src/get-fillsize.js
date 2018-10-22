@@ -12,10 +12,12 @@ export default function getFillSize(
   factor = 1
 ) {
   // Make an initial guess at font-size that fits width
-  let fontSize = Math.max(
-    Math.min(Number(el.offsetWidth) / (factor * 10), maxFontSize),
-    minFontSize
-  );
+  let fontSize = maxFontSize;
+
+  // Math.max(
+  //   Math.min(Number(el.offsetWidth) / (factor * 10), maxFontSize),
+  //   minFontSize
+  // );
 
   const step = 1;
   let complete;
@@ -24,22 +26,14 @@ export default function getFillSize(
     el.style.fontSize = `${fontSize}px`;
     const [overflowWidth, overflowHeight] = doesOverflow(el);
 
-    if (mode === "single" && (!overflowHeight && !overflowWidth)) {
-      if (fontSize <= minFontSize) {
-        fontSize = minFontSize;
-        complete = true;
-      } else {
-        fontSize -= step;
-        complete = true;
-      }
-    } else if (mode === "single" && !overflowWidth) {
+    if (fontSize <= minFontSize) {
+      // because start at max, if less than min, exhausted all values
+      fontSize = minFontSize;
+      complete = true;
+    } else if (overflowHeight || overflowWidth) {
       fontSize -= step;
+    } else {
       complete = true;
-    } else if (fontSize >= maxFontSize) {
-      fontSize = maxFontSize;
-      complete = true;
-    } else if (!complete) {
-      fontSize += step;
     }
   }
   return fontSize;
