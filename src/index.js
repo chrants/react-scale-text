@@ -171,7 +171,7 @@ ScaleText.propTypes = {
 
 ScaleText.defaultProps = {
   minFontSize: 1,
-  maxFontSize: Number.POSITIVE_INFINITY,
+  maxFontSize: 1000,
   mode: "single",
   onReady: () => null
 };
