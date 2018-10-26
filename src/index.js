@@ -100,8 +100,8 @@ class ScaleText extends Component {
       position: "absolute",
       top: "0px",
       left: "calc(100vw * 2)",
-      width: getStyle(this._wrapper, "width"),
-      height: getStyle(this._wrapper, "height"),
+      width: `${this.props.maxWidth}px`,
+        height: `${this.props.maxHeight}px`,
       padding: getStyle(this._wrapper, "padding"),
       lineHeight: getStyle(this._wrapper, "line-height"),
       letterSpacing: getStyle(this._wrapper, "letter-spacing"),
@@ -165,13 +165,15 @@ ScaleText.propTypes = {
   children: PropTypes.node.isRequired,
   minFontSize: PropTypes.number.isRequired,
   maxFontSize: PropTypes.number.isRequired,
+  maxWidth: PropTypes.number.isRequired,
+  maxHeight: PropTypes.number.isRequired,
   mode: PropTypes.oneOf(["single", "multi"]),
   onReady: PropTypes.func
 };
 
 ScaleText.defaultProps = {
   minFontSize: 1,
-  maxFontSize: 1000,
+  maxFontSize: 200,
   mode: "single",
   onReady: () => null
 };
